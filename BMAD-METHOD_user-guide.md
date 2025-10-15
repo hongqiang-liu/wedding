@@ -1,50 +1,50 @@
-# BMad Method — User Guide
+# BMad Method — 用户指南
 
-This guide will help you understand and effectively use the BMad Method for agile AI-driven planning and development.
+本指南将帮助你理解并高效使用 BMad Method 进行敏捷、AI驱动的规划与开发。
 
-## The BMad Plan and Execute Workflow
+## BMad 计划与执行工作流
 
-First, here is the full standard Greenfield Planning + Execution Workflow. Brownfield is very similar, but it's suggested to understand this greenfield first, even if on a simple project before tackling a brownfield project. The BMad Method needs to be installed to the root of your new project folder. For the planning phase, you can optionally perform it with powerful web agents, potentially resulting in higher quality results at a fraction of the cost it would take to complete if providing your own API key or credits in some Agentic tools. For planning, powerful thinking models and larger context - along with working as a partner with the agents will net the best results.
+首先，这是完整的标准绿地（Greenfield）规划 + 执行工作流。棕地（Brownfield）流程非常类似，但建议先理解绿地流程，即使是在一个简单项目上，也要先体验绿地流程再处理棕地项目。BMad Method 需要安装在新项目文件夹的根目录。规划阶段可选用强大的 Web Agent，通常能以更低成本获得更高质量的结果（如在部分 Agentic 工具中提供自己的 API Key 或积分）。规划时，强大的思维模型和更大的上下文——以及与 Agent 合作——将获得最佳效果。
 
-If you are going to use the BMad Method with a Brownfield project (an existing project), review **[Working in the Brownfield](./working-in-the-brownfield.md)**.
+如果你要在棕地项目（已有项目）中使用 BMad Method，请查阅 **[在棕地项目中工作](./working-in-the-brownfield.md)**。
 
-If the diagrams below don't render, install Markdown All in One along with the Markdown Preview Mermaid Support plugins to VSCode (or one of the forked clones). With these plugins, if you right click on the tab when open, there should be an Open Preview option, or check the IDE documentation.
+如果下方流程图无法渲染，请在 VSCode（或其分支克隆版）安装 Markdown All in One 和 Markdown Preview Mermaid Support 插件。安装后，右键标签页可选择“Open Preview”，或查阅 IDE 文档。
 
-### The Planning Workflow (Web UI or Powerful IDE Agents)
+### 规划工作流（Web UI 或强大 IDE Agent）
 
-Before development begins, BMad follows a structured planning workflow that's ideally done in web UI for cost efficiency:
+在开发开始前，BMad 遵循结构化的规划流程，建议在 Web UI 中完成以节省成本：
 
 ```mermaid
 graph TD
-    A["Start: Project Idea"] --> B{"Optional: Analyst Research"}
-    B -->|Yes| C["Analyst: Brainstorming (Optional)"]
-    B -->|No| G{"Project Brief Available?"}
-    C --> C2["Analyst: Market Research (Optional)"]
-    C2 --> C3["Analyst: Competitor Analysis (Optional)"]
-    C3 --> D["Analyst: Create Project Brief"]
+    A["开始：项目想法"] --> B{"可选：分析师调研"}
+    B -->|是| C["分析师：头脑风暴（可选）"]
+    B -->|否| G{"已有项目简报？"}
+    C --> C2["分析师：市场调研（可选）"]
+    C2 --> C3["分析师：竞品分析（可选）"]
+    C3 --> D["分析师：创建项目简报"]
     D --> G
-    G -->|Yes| E["PM: Create PRD from Brief (Fast Track)"]
-    G -->|No| E2["PM: Interactive PRD Creation (More Questions)"]
-    E --> F["PRD Created with FRs, NFRs, Epics & Stories"]
+    G -->|是| E["PM：根据简报创建 PRD（快速通道）"]
+    G -->|否| E2["PM：交互式 PRD 创建（更多问题）"]
+    E --> F["PRD 包含 FRs、NFRs、Epics & Stories"]
     E2 --> F
-    F --> F2{"UX Required?"}
-    F2 -->|Yes| F3["UX Expert: Create Front End Spec"]
-    F2 -->|No| H["Architect: Create Architecture from PRD"]
-    F3 --> F4["UX Expert: Generate UI Prompt for Lovable/V0 (Optional)"]
-    F4 --> H2["Architect: Create Architecture from PRD + UX Spec"]
-    H --> Q{"Early Test Strategy? (Optional)"}
+    F --> F2{"需要 UX？"}
+    F2 -->|是| F3["UX 专家：创建前端规范"]
+    F2 -->|否| H["架构师：根据 PRD 创建架构"]
+    F3 --> F4["UX 专家：生成 UI Prompt（可选）"]
+    F4 --> H2["架构师：根据 PRD+UX 规范创建架构"]
+    H --> Q{"早期测试策略？（可选）"}
     H2 --> Q
-    Q -->|Yes| R["QA: Early Test Architecture Input on High-Risk Areas"]
-    Q -->|No| I
-    R --> I["PO: Run Master Checklist"]
-    I --> J{"Documents Aligned?"}
-    J -->|Yes| K["Planning Complete"]
-    J -->|No| L["PO: Update Epics & Stories"]
-    L --> M["Update PRD/Architecture as needed"]
+    Q -->|是| R["QA：高风险区域早期测试架构输入"]
+    Q -->|否| I
+    R --> I["PO：运行主检查表"]
+    I --> J{"文档一致？"}
+    J -->|是| K["规划完成"]
+    J -->|否| L["PO：更新 Epics & Stories"]
+    L --> M["按需更新 PRD/架构"]
     M --> I
-    K --> N["📁 Switch to IDE (If in a Web Agent Platform)"]
-    N --> O["PO: Shard Documents"]
-    O --> P["Ready for SM/Dev Cycle"]
+    K --> N["📁 切换到 IDE（如在 Web Agent 平台）"]
+    N --> O["PO：分片文档"]
+    O --> P["准备进入 SM/开发周期"]
 
     style A fill:#f5f5f5,color:#000
     style B fill:#e3f2fd,color:#000
@@ -73,65 +73,66 @@ graph TD
     style P fill:#34a853,color:#fff
 ```
 
-#### Web UI to IDE Transition
+#### Web UI 到 IDE 的转变
 
-**Critical Transition Point**: Once the PO confirms document alignment, you must switch from web UI to IDE to begin the development workflow:
+**关键转折点**：PO 确认文档一致后，必须从 Web UI 切换到 IDE，开始开发流程：
 
-1. **Copy Documents to Project**: Ensure `docs/prd.md` and `docs/architecture.md` are in your project's docs folder (or a custom location you can specify during installation)
-2. **Switch to IDE**: Open your project in your preferred Agentic IDE
-3. **Document Sharding**: Use the PO agent to shard the PRD and then the Architecture
-4. **Begin Development**: Start the Core Development Cycle that follows
+1. **复制文档到项目**：确保 `docs/prd.md` 和 `docs/architecture.md` 在项目的 docs 文件夹（或安装时指定的自定义位置）
+2. **切换到 IDE**：在你喜欢的 Agentic IDE 中打开项目
+3. **文档分片**：使用 PO agent 分片 PRD 和架构文档
+4. **开始开发**：进入核心开发周期
 
-#### Planning Artifacts (Standard Paths)
+#### 规划产物（标准路径）
 
 ```text
 PRD              → docs/prd.md
-Architecture     → docs/architecture.md
-Sharded Epics    → docs/epics/
-Sharded Stories  → docs/stories/
-QA Assessments   → docs/qa/assessments/
-QA Gates         → docs/qa/gates/
+架构             → docs/architecture.md
+分片 Epics       → docs/epics/
+分片 Stories     → docs/stories/
+QA 评估          → docs/qa/assessments/
+QA Gate          → docs/qa/gates/
 ```
 
-### The Core Development Cycle (IDE)
+### 核心开发周期（IDE）
 
-Once planning is complete and documents are sharded, BMad follows a structured development workflow:
+规划完成且文档分片后，BMad 遵循结构化开发流程：
 
 ```mermaid
 graph TD
-    A["开发阶段开始"] --> B["SM：审查上一个故事的开发/质量保证笔记"]
-    B --> B2["SM：根据分片史诗和架构草拟下一个故事"]
-    B2 --> S{"高风险故事？（可选）"}
-    S -->|是| T["QA：对草拟的故事进行风险和设计评估"]
+    A["开发阶段开始"] --> B["SM：回顾上一个 Story 的开发/QA 记录"]
+    B --> B2["SM：根据分片 Epic+架构草拟下一个 Story"]
+    B2 --> S{"高风险 Story？（可选）"}
+    S -->|是| T["QA：*risk + *design Story 草稿"]
     S -->|否| B3
-    T --> U["测试策略和风险概况创建完成"]
-    U --> B3{"PO：验证故事草稿（可选）"}
-    B3 -->|请求验证| B4["PO：根据工件验证故事"]
+    T --> U["创建测试策略与风险档案"]
+    U --> B3{"PO：验证 Story 草稿（可选）"}
+    B3 -->|请求验证| B4["PO：根据产物验证 Story"]
     B3 -->|跳过验证| C{"用户批准"}
     B4 --> C
-    C -->|已批准| D["开发：按顺序执行任务"]
-    C -->|需要修改| B2
-    D --> E["开发：执行任务和测试"]
-    E --> V{"开发中期质量保证检查？（可选）"}
-    V -->|是| W["QA：进行早期验证的跟踪或非功能性需求"]
+    C -->|批准| D["Dev：顺序执行任务"]
+    C -->|需修改| B2
+    D --> E["Dev：实现任务与测试"]
+    E --> V{"开发中 QA 检查？（可选）"}
+    V -->|是| W["QA：*trace 或 *nfr 早期验证"]
     V -->|否| F
-    W --> X["开发：解决覆盖范围/非功能性需求的差距"]
-    X --> F["开发：运行所有验证"]
-    F --> G["开发：标记为待审核并添加注释"]
+    W --> X["Dev：补齐覆盖/NFR 缺口"]
+    X --> F["Dev：运行所有验证"]
+    F --> G["Dev：标记为待评审并添加备注"]
     G --> H{"用户验证"}
-    H -->|请求质量保证审核| I["QA：测试架构分析+质量门"]
-    H -->|无需质量保证直接批准| M["重要：验证所有回归测试和代码规范检查均通过"]
-    I --> J["QA：测试架构分析+主动重构"]
+    H -->|请求 QA 评审| I["QA：测试架构师评审 + 质量 Gate"]
+    H -->|直接批准| M["重要：确保所有回归测试和 Lint 通过"]
+    I --> J["QA：测试架构分析 + 主动重构"]
     J --> L{"QA 决策"}
-    L -->|需要开发工作| D
-    L -->|已批准| M
-    H -->|需要修复| D重要提示：继续操作前请先保存您的更改！]
-    “需要更新门禁吗？”}
-    Y -->|是| Z["QA: *更新状态的门"]
+    L -->|需开发修复| D
+    L -->|批准| M
+    H -->|需修复| D
+    M --> N["重要：提交更改后再继续！"]
+    N --> Y{"需更新 Gate？"}
+    Y -->|是| Z["QA：*gate 更新状态"]
     Y -->|否| K
-    Z --> K["将故事标记为已完成"]
+    Z --> K["标记 Story 完成"]
     K --> B
-    
+
     style A fill:#f5f5f5,color:#000
     style B fill:#e8f5e9,color:#000
     style B2 fill:#e8f5e9,color:#000
@@ -159,72 +160,72 @@ graph TD
     style Z fill:#ffd54f,color:#000
 ```
 
-## Prerequisites
+## 前置条件
 
-Before installing BMad Method, ensure you have:
+安装 BMad Method 前，请确保：
 
-- **Node.js** ≥ 18, **npm** ≥ 9
-- **Git** installed and configured
-- **(Optional)** VS Code with "Markdown All in One" + "Markdown Preview Mermaid Support" extensions
+- **Node.js** ≥ 18，**npm** ≥ 9
+- 已安装并配置 **Git**
+- **（可选）** VS Code 安装 "Markdown All in One" + "Markdown Preview Mermaid Support" 扩展
 
-## Installation
+## 安装
 
-### Optional
+### 可选
 
-If you want to do the planning on the web with Claude (Sonnet 4 or Opus), Gemini Gem (2.5 Pro), or Custom GPTs:
+如需在 Web 上用 Claude（Sonnet 4 或 Opus）、Gemini Gem（2.5 Pro）或自定义 GPT 进行规划：
 
-1. Navigate to `dist/teams/`
-2. Copy `team-fullstack.txt`
-3. Create new Gemini Gem or CustomGPT
-4. Upload file with instructions: "Your critical operating instructions are attached, do not break character as directed"
-5. Type `/help` to see available commands
+1. 进入 `dist/teams/`
+2. 复制 `team-fullstack.txt`
+3. 创建新的 Gemini Gem 或 CustomGPT
+4. 上传文件并附言：“你的关键操作指令已附，请严格按指令执行”
+5. 输入 `/help` 查看可用命令
 
-### IDE Project Setup
+### IDE 项目设置
 
 ```bash
-# Interactive installation (recommended)
+# 交互式安装（推荐）
 npx bmad-method install
 ```
 
 ### OpenCode
 
-BMAD integrates with OpenCode via a project-level `opencode.jsonc`/`opencode.json` (JSON-only, no Markdown fallback).
+BMAD 通过项目级 `opencode.jsonc`/`opencode.json`（仅 JSON，无 Markdown 备选）集成 OpenCode。
 
-- Installation:
-  - Run `npx bmad-method install` and choose `OpenCode` in the IDE list.
-  - The installer will detect an existing `opencode.jsonc`/`opencode.json` or create a minimal `opencode.jsonc` if missing.
-  - It will:
-    - Ensure `instructions` includes `.bmad-core/core-config.yaml` (and each selected expansion pack’s `config.yaml`).
-    - Merge BMAD agents and commands using file references (`{file:./.bmad-core/...}`), idempotently.
-    - Preserve other top-level fields and user-defined entries.
+- 安装方式：
+  - 运行 `npx bmad-method install`，在 IDE 列表中选择 `OpenCode`
+  - 安装器会检测现有 `opencode.jsonc`/`opencode.json`，如无则创建最简 `opencode.jsonc`
+  - 它会：
+    - 确保 `instructions` 包含 `.bmad-core/core-config.yaml`（及所选扩展包的 `config.yaml`）
+    - 以文件引用（`{file:./.bmad-core/...}`）方式合并 BMAD agent 和命令，幂等处理
+    - 保留其他顶层字段和用户自定义内容
 
-- Prefixes and collisions:
-  - You can opt-in to prefix agent keys with `bmad-` and command keys with `bmad:tasks:` to avoid name collisions.
-  - If a key already exists and is not BMAD-managed, the installer will skip it and suggest enabling prefixes.
+- 前缀与冲突：
+  - 可选择 agent key 加 `bmad-` 前缀，命令 key 加 `bmad:tasks:` 前缀，避免命名冲突
+  - 如 key 已存在且非 BMAD 管理，安装器会跳过并建议启用前缀
 
-- What gets added:
-  - `instructions`: `.bmad-core/core-config.yaml` plus any selected expansion pack `config.yaml` files.
-  - `agent`: BMAD agents from core and selected packs.
-    - `prompt`: `{file:./.bmad-core/agents/<id>.md}` (or pack path)
-    - `mode`: `primary` for orchestrators, otherwise `all`
-    - `tools`: `{ write: true, edit: true, bash: true }`
-    - `description`: extracted from the agent’s `whenToUse`
-  - `command`: BMAD tasks from core and selected packs.
-    - `template`: `{file:./.bmad-core/tasks/<id>.md}` (or pack path)
-    - `description`: extracted from the task’s “Purpose” section
+- 添加内容：
+  - `instructions`：`.bmad-core/core-config.yaml` 及所选扩展包 `config.yaml`
+  - `agent`：核心及所选包的 BMAD agent
+    - `prompt`：`{file:./.bmad-core/agents/<id>.md}`（或包路径）
+    - `mode`：主控 agent 用 `primary`，其他用 `all`
+    - `tools`：`{ write: true, edit: true, bash: true }`
+    - `description`：从 agent 的 whenToUse 提取
+  - `command`：核心及所选包的 BMAD 任务
+    - `template`：`{file:./.bmad-core/tasks/<id>.md}`（或包路径）
+    - `description`：从任务 Purpose 部分提取
 
-- Selected Packages Only:
-  - The installer includes agents and tasks only from the packages you selected in the earlier step (core and chosen packs).
+- 仅选中包：
+  - 仅包含你在前一步选择的核心和扩展包的 agent 和任务
 
-- Refresh after changes:
-  - Re-run:
+- 变更后刷新：
+  - 重新运行：
     ```bash
     npx bmad-method install -f -i opencode
     ```
-  - The installer safely updates entries without duplication and preserves your custom fields and comments.
+  - 安装器安全更新，无重复，保留你的自定义字段和注释
 
-- Optional convenience script:
-  - You can add a script to your project’s `package.json` for quick refreshes:
+- 可选便捷脚本：
+  - 可在项目 `package.json` 添加脚本，快速刷新：
     ```json
     {
       "scripts": {
@@ -233,51 +234,51 @@ BMAD integrates with OpenCode via a project-level `opencode.jsonc`/`opencode.jso
     }
     ```
 
-### Codex (CLI & Web)
+### Codex（CLI & Web）
 
-BMAD integrates with OpenAI Codex via `AGENTS.md` and committed core agent files.
+BMAD 通过 `AGENTS.md` 和已提交的核心 agent 文件集成 OpenAI Codex。
 
-- Two installation modes:
-  - Codex (local only): keeps `.bmad-core/` ignored for local dev.
+- 两种安装模式：
+  - Codex（仅本地）：`.bmad-core/` 忽略，仅本地开发
     - `npx bmad-method install -f -i codex -d .`
-  - Codex Web Enabled: ensures `.bmad-core/` is tracked so you can commit it for Codex Web.
+  - Codex Web 启用：`.bmad-core/` 需跟踪，可提交到 Codex Web
     - `npx bmad-method install -f -i codex-web -d .`
 
-- What gets generated:
-  - `AGENTS.md` at the project root with a BMAD section containing
-    - How-to-use with Codex (CLI & Web)
-    - Agent Directory (Title, ID, When To Use)
-    - Detailed per‑agent sections with source path, when-to-use, activation phrasing, and YAML
-    - Tasks with quick usage notes
-  - If a `package.json` exists, helpful scripts are added:
-    - `bmad:refresh`, `bmad:list`, `bmad:validate`
+- 生成内容：
+  - 项目根目录生成 `AGENTS.md`，BMAD 区块包含：
+    - Codex（CLI & Web）使用说明
+    - agent 目录（标题、ID、使用场景）
+    - 每个 agent 详细介绍（源码路径、使用场景、激活短语、YAML）
+    - 任务及快速使用说明
+  - 如有 `package.json`，自动添加便捷脚本：
+    - `bmad:refresh`、`bmad:list`、`bmad:validate`
 
-- Using Codex:
-  - CLI: run `codex` in the project root and prompt naturally, e.g., “As dev, implement …”.
-  - Web: commit `.bmad-core/` and `AGENTS.md`, then open the repo in Codex and prompt the same way.
+- 使用 Codex：
+  - CLI：在项目根运行 `codex`，自然提问，如“作为开发，实现……”
+  - Web：提交 `.bmad-core/` 和 `AGENTS.md`，在 Codex 打开仓库同样提问
 
-- Refresh after changes:
-  - Re-run the appropriate install mode (`codex` or `codex-web`) to update the BMAD block in `AGENTS.md`.
+- 变更后刷新：
+  - 重新运行对应安装模式（`codex` 或 `codex-web`），更新 `AGENTS.md` 的 BMAD 区块
 
-## Special Agents
+## 特殊 Agent
 
-There are two BMad agents — in the future they'll be consolidated into a single BMad-Master.
+BMAD 有两个 agent——未来将合并为单一 BMad-Master。
 
 ### BMad-Master
 
-This agent can do any task or command that all other agents can do, aside from actual story implementation. Additionally, this agent can help explain the BMad Method when on the web by accessing the knowledge base and explaining anything to you about the process.
+此 agent 可执行所有其他 agent 的任务和命令，除实际 story 实现外。它还能在 Web 上访问知识库，向你解释 BMad Method 的任何流程。
 
-If you don't want to bother switching between different agents aside from the dev, this is the agent for you. Just remember that as the context grows, the performance of the agent degrades, therefore it is important to instruct the agent to compact the conversation and start a new conversation with the compacted conversation as the initial message. Do this often, preferably after each story is implemented.
+如果你不想在 dev 之外切换 agent，这就是你的首选。但随着上下文增长，agent 性能会下降，因此需定期指示 agent 压缩对话并以压缩后的内容开启新会话。建议每实现一个 story 后都这样做。
 
 ### BMad-Orchestrator
 
-This agent should NOT be used within the IDE, it is a heavyweight, special-purpose agent that utilizes a lot of context and can morph into any other agent. This exists solely to facilitate the teams within the web bundles. If you use a web bundle you will be greeted by the BMad Orchestrator.
+此 agent 不应在 IDE 内使用，是重量级、特殊用途 agent，使用大量上下文，可变形为其他 agent。仅用于 Web bundle 团队协作。使用 Web bundle 时会由 BMad Orchestrator 接待。
 
-### How Agents Work
+### Agent 工作原理
 
-#### Dependencies System
+#### 依赖系统
 
-Each agent has a YAML section that defines its dependencies:
+每个 agent 有 YAML 依赖定义：
 
 ```yaml
 dependencies:
@@ -291,97 +292,97 @@ dependencies:
     - bmad-kb.md
 ```
 
-**Key Points:**
+**要点：**
 
-- Agents only load resources they need (lean context)
-- Dependencies are automatically resolved during bundling
-- Resources are shared across agents to maintain consistency
+- agent 只加载所需资源（精简上下文）
+- 依赖在打包时自动解析
+- 资源在 agent 间共享，保持一致性
 
-#### Agent Interaction
+#### Agent 交互
 
-**In IDE:**
-
-```bash
-# Some IDEs, like Cursor or Windsurf for example, utilize manual rules so interaction is done with the '@' symbol
-@pm Create a PRD for a task management app
-@architect Design the system architecture
-@dev Implement the user authentication
-
-# Some IDEs, like Claude Code, use slash commands instead
-/pm Create user stories
-/dev Fix the login bug
-```
-
-#### Interactive Modes
-
-- **Incremental Mode**: Step-by-step with user input
-- **YOLO Mode**: Rapid generation with minimal interaction
-
-## IDE Integration
-
-### IDE Best Practices
-
-- **Context Management**: Keep relevant files only in context, keep files as lean and focused as necessary
-- **Agent Selection**: Use appropriate agent for task
-- **Iterative Development**: Work in small, focused tasks
-- **File Organization**: Maintain clean project structure
-- **Commit Regularly**: Save your work frequently
-
-## The Test Architect (QA Agent)
-
-### Overview
-
-The QA agent in BMad is not just a "senior developer reviewer" - it's a **Test Architect** with deep expertise in test strategy, quality gates, and risk-based testing. Named Quinn, this agent provides advisory authority on quality matters while actively improving code when safe to do so.
-
-#### Quick Start (Essential Commands)
+**在 IDE：**
 
 ```bash
-@qa *risk {story}       # Assess risks before development
-@qa *design {story}     # Create test strategy
-@qa *trace {story}      # Verify test coverage during dev
-@qa *nfr {story}        # Check quality attributes
-@qa *review {story}     # Full assessment → writes gate
+# 部分 IDE（如 Cursor、Windsurf）用 @ 符号手动规则
+@pm 创建任务管理应用的 PRD
+@architect 设计系统架构
+@dev 实现用户认证
+
+# 部分 IDE（如 Claude Code）用斜杠命令
+/pm 创建用户故事
+/dev 修复登录 bug
 ```
 
-#### Command Aliases (Test Architect)
+#### 交互模式
 
-The documentation uses short forms for convenience. Both styles are valid:
+- **增量模式**：逐步，用户参与
+- **YOLO 模式**：快速生成，最少交互
+
+## IDE 集成
+
+### IDE 最佳实践
+
+- **上下文管理**：只保留相关文件，文件尽量精简聚焦
+- **Agent 选择**：按任务选用合适 agent
+- **迭代开发**：小步快跑，聚焦任务
+- **文件组织**：保持项目结构清晰
+- **定期提交**：频繁保存工作
+
+## 测试架构师（QA Agent）
+
+### 概述
+
+BMad 的 QA agent 不只是“高级开发者评审”——而是**测试架构师**，精通测试策略、质量 Gate 和风险测试。名为 Quinn，既有质量建议权，也能在安全情况下主动优化代码。
+
+#### 快速开始（核心命令）
+
+```bash
+@qa *risk {story}       # 开发前风险评估
+@qa *design {story}     # 创建测试策略
+@qa *trace {story}      # 开发中验证测试覆盖
+@qa *nfr {story}        # 检查质量属性
+@qa *review {story}     # 全面评审 → 写 Gate
+```
+
+#### 命令别名（测试架构师）
+
+文档用简写，长短都可：
 
 ```text
 *risk    → *risk-profile
 *design  → *test-design
 *nfr     → *nfr-assess
-*trace   → *trace-requirements (or just *trace)
+*trace   → *trace-requirements（或 *trace）
 *review  → *review
 *gate    → *gate
 ```
 
-### Core Capabilities
+### 核心能力
 
-#### 1. Risk Profiling (`*risk`)
+#### 1. 风险评估（`*risk`）
 
-**When:** After story draft, before development begins (earliest intervention point)
+**时机：** Story 草稿后，开发前（最早介入点）
 
-Identifies and assesses implementation risks:
+识别并评估实现风险：
 
-- **Categories**: Technical, Security, Performance, Data, Business, Operational
-- **Scoring**: Probability × Impact analysis (1-9 scale)
-- **Mitigation**: Specific strategies for each identified risk
-- **Gate Impact**: Risks ≥9 trigger FAIL, ≥6 trigger CONCERNS (see `tasks/risk-profile.md` for authoritative rules)
+- **类别**：技术、安全、性能、数据、业务、运维
+- **评分**：概率 × 影响（1-9 分）
+- **缓解**：针对每项风险给出策略
+- **Gate 影响**：风险 ≥9 触发 FAIL，≥6 触发 CONCERNS（详见 `tasks/risk-profile.md`）
 
-#### 2. Test Design (`*design`)
+#### 2. 测试设计（`*design`）
 
-**When:** After story draft, before development begins (guides what tests to write)
+**时机：** Story 草稿后，开发前（指导测试编写）
 
-Creates comprehensive test strategies including:
+制定全面测试策略，包括：
 
-- Test scenarios for each acceptance criterion
-- Appropriate test level recommendations (unit vs integration vs E2E)
-- Risk-based prioritization (P0/P1/P2)
-- Test data requirements and mock strategies
-- Execution strategies for CI/CD integration
+- 每个验收标准的测试场景
+- 推荐合适测试级别（单元、集成、E2E）
+- 基于风险优先级（P0/P1/P2）
+- 测试数据需求与 mock 策略
+- CI/CD 执行策略
 
-**Example output:**
+**示例输出：**
 
 ```yaml
 test_summary:
@@ -391,167 +392,165 @@ test_summary:
     integration: 7
     e2e: 2
   by_priority:
-    P0: 8 # Must have - linked to critical risks
-    P1: 10 # Should have - medium risks
-    P2: 6 # Nice to have - low risks
+    P0: 8 # 必须有——关键风险
+    P1: 10 # 应有——中等风险
+    P2: 6 # 可选——低风险
 ```
 
-#### 3. Requirements Tracing (`*trace`)
+#### 3. 需求追踪（`*trace`）
 
-**When:** During development (mid-implementation checkpoint)
+**时机：** 开发中（中途检查点）
 
-Maps requirements to test coverage:
+映射需求与测试覆盖：
 
-- Documents which tests validate each acceptance criterion
-- Uses Given-When-Then for clarity (documentation only, not BDD code)
-- Identifies coverage gaps with severity ratings
-- Creates traceability matrix for audit purposes
+- 记录每个验收标准对应的测试
+- 用 Given-When-Then 表达（文档用，不是 BDD 代码）
+- 标记覆盖缺口及严重等级
+- 创建可审计的追踪矩阵
 
-#### 4. NFR Assessment (`*nfr`)
+#### 4. NFR 评估（`*nfr`）
 
-**When:** During development or early review (validate quality attributes)
+**时机：** 开发中或早期评审（验证质量属性）
 
-Validates non-functional requirements:
+验证非功能需求：
 
-- **Core Four**: Security, Performance, Reliability, Maintainability
-- **Evidence-Based**: Looks for actual implementation proof
-- **Gate Integration**: NFR failures directly impact quality gates
+- **核心四项**：安全、性能、可靠性、可维护性
+- **证据驱动**：查找实际实现证明
+- **Gate 集成**：NFR 不达标直接影响质量 Gate
 
-#### 5. Comprehensive Test Architecture Review (`*review`)
+#### 5. 全面测试架构评审（`*review`）
 
-**When:** After development complete, story marked "Ready for Review"
+**时机：** 开发完成，Story 标记“待评审”
 
-When you run `@qa *review {story}`, Quinn performs:
+运行 `@qa *review {story}` 时，Quinn 执行：
 
-- **Requirements Traceability**: Maps every acceptance criterion to its validating tests
-- **Test Level Analysis**: Ensures appropriate testing at unit, integration, and E2E levels
-- **Coverage Assessment**: Identifies gaps and redundant test coverage
-- **Active Refactoring**: Improves code quality directly when safe
-- **Quality Gate Decision**: Issues PASS/CONCERNS/FAIL status based on findings
+- **需求追踪**：每个验收标准对应测试
+- **测试级别分析**：确保单元、集成、E2E 测试合理
+- **覆盖评估**：发现缺口与冗余
+- **主动重构**：安全时直接优化代码
+- **质量 Gate 决策**：按结果发出 PASS/CONCERNS/FAIL
 
-#### 6. Quality Gates (`*gate`)
+#### 6. 质量 Gate（`*gate`）
 
-**When:** After review fixes or when gate status needs updating
+**时机：** 评审修复后或需更新 Gate 状态时
 
-Manages quality gate decisions:
+管理质量 Gate 决策：
 
-- **Deterministic Rules**: Clear criteria for PASS/CONCERNS/FAIL
-- **Parallel Authority**: QA owns gate files in `docs/qa/gates/`
-- **Advisory Nature**: Provides recommendations, not blocks
-- **Waiver Support**: Documents accepted risks when needed
+- **确定性规则**：PASS/CONCERNS/FAIL 明确标准
+- **并行权威**：QA 管理 `docs/qa/gates/` gate 文件
+- **建议性质**：提供建议，不阻塞流程
+- **豁免支持**：需记录原因、批准人、到期日（见 `templates/qa-gate-tmpl.yaml`、`tasks/review-story.md`、`tasks/risk-profile.md`）
 
-**Note:** Gates are advisory; teams choose their quality bar. WAIVED requires reason, approver, and expiry date. See `templates/qa-gate-tmpl.yaml` for schema and `tasks/review-story.md` (gate rules) and `tasks/risk-profile.md` for scoring.
+### 与测试架构师协作
 
-### Working with the Test Architect
+#### 集成 BMad 工作流
 
-#### Integration with BMad Workflow
+测试架构师贯穿开发全周期，各能力使用时机如下：
 
-The Test Architect provides value throughout the entire development lifecycle. Here's when and how to leverage each capability:
-
-| **Stage**          | **Command** | **When to Use**         | **Value**                  | **Output**                                                     |
+| **阶段**          | **命令** | **使用时机**         | **价值**                  | **输出**                                                     |
 | ------------------ | ----------- | ----------------------- | -------------------------- | -------------------------------------------------------------- |
-| **Story Drafting** | `*risk`     | After SM drafts story   | Identify pitfalls early    | `docs/qa/assessments/{epic}.{story}-risk-{YYYYMMDD}.md`        |
-|                    | `*design`   | After risk assessment   | Guide dev on test strategy | `docs/qa/assessments/{epic}.{story}-test-design-{YYYYMMDD}.md` |
-| **Development**    | `*trace`    | Mid-implementation      | Verify test coverage       | `docs/qa/assessments/{epic}.{story}-trace-{YYYYMMDD}.md`       |
-|                    | `*nfr`      | While building features | Catch quality issues early | `docs/qa/assessments/{epic}.{story}-nfr-{YYYYMMDD}.md`         |
-| **Review**         | `*review`   | Story marked complete   | Full quality assessment    | QA Results in story + gate file                                |
-| **Post-Review**    | `*gate`     | After fixing issues     | Update quality decision    | Updated `docs/qa/gates/{epic}.{story}-{slug}.yml`              |
+| **Story 草拟** | `*risk`     | SM 草拟 Story 后   | 早识别风险    | `docs/qa/assessments/{epic}.{story}-risk-{YYYYMMDD}.md`        |
+|                    | `*design`   | 风险评估后   | 指导测试策略 | `docs/qa/assessments/{epic}.{story}-test-design-{YYYYMMDD}.md` |
+| **开发阶段**    | `*trace`    | 开发中      | 验证测试覆盖       | `docs/qa/assessments/{epic}.{story}-trace-{YYYYMMDD}.md`       |
+|                    | `*nfr`      | 功能开发时 | 早发现质量问题 | `docs/qa/assessments/{epic}.{story}-nfr-{YYYYMMDD}.md`         |
+| **评审阶段**         | `*review`   | 开发完成   | 全面质量评估    | Story QA 结果 + gate 文件                                |
+| **评审后**    | `*gate`     | 修复后     | 更新质量决策    | 更新 `docs/qa/gates/{epic}.{story}-{slug}.yml`              |
 
-#### Example Commands
+#### 示例命令
 
 ```bash
-# Planning Stage - Run these BEFORE development starts
-@qa *risk {draft-story}     # What could go wrong?
-@qa *design {draft-story}   # What tests should we write?
+# 规划阶段 - 开发前运行
+@qa *risk {draft-story}     # 有哪些风险？
+@qa *design {draft-story}   # 应写哪些测试？
 
-# Development Stage - Run these DURING coding
-@qa *trace {story}          # Are we testing everything?
-@qa *nfr {story}            # Are we meeting quality standards?
+# 开发阶段 - 编码时运行
+@qa *trace {story}          # 测试覆盖全了吗？
+@qa *nfr {story}            # 质量标准达标吗？
 
-# Review Stage - Run when development complete
-@qa *review {story}         # Comprehensive assessment + refactoring
+# 评审阶段 - 开发完成后运行
+@qa *review {story}         # 全面评审 + 重构
 
-# Post-Review - Run after addressing issues
-@qa *gate {story}           # Update gate status
+# 评审后 - 修复后运行
+@qa *gate {story}           # 更新 Gate 状态
 ```
 
-### Quality Standards Enforced
+### 强制质量标准
 
-Quinn enforces these test quality principles:
+Quinn 强制以下测试质量原则：
 
-- **No Flaky Tests**: Ensures reliability through proper async handling
-- **No Hard Waits**: Dynamic waiting strategies only
-- **Stateless & Parallel-Safe**: Tests run independently
-- **Self-Cleaning**: Tests manage their own test data
-- **Appropriate Test Levels**: Unit for logic, integration for interactions, E2E for journeys
-- **Explicit Assertions**: Keep assertions in tests, not helpers
+- **无不稳定测试**：异步处理可靠
+- **无硬等待**：仅用动态等待
+- **无状态、并行安全**：测试独立运行
+- **自清理**：测试自管测试数据
+- **测试级别合理**：逻辑用单元，交互用集成，流程用 E2E
+- **显式断言**：断言只在测试，不在辅助函数
 
-### Gate Status Meanings
+### Gate 状态含义
 
-- **PASS**: All critical requirements met, no blocking issues
-- **CONCERNS**: Non-critical issues found, team should review
-- **FAIL**: Critical issues that should be addressed (security risks, missing P0 tests)
-- **WAIVED**: Issues acknowledged but explicitly accepted by team
+- **PASS**：所有关键需求达标，无阻塞问题
+- **CONCERNS**：发现非关键问题，团队需关注
+- **FAIL**：关键问题需修复（如安全风险、缺 P0 测试）
+- **WAIVED**：问题已被团队接受，需注明原因、批准人、到期
 
-### Special Situations
+### 特殊情况
 
-**High-Risk Stories:**
+**高风险 Story：**
 
-- Always run `*risk` and `*design` before development starts
-- Consider mid-development `*trace` and `*nfr` checkpoints
+- 开发前务必运行 `*risk` 和 `*design`
+- 开发中可加 `*trace` 和 `*nfr` 检查
 
-**Complex Integrations:**
+**复杂集成：**
 
-- Run `*trace` during development to ensure all integration points tested
-- Follow up with `*nfr` to validate performance across integrations
+- 开发中用 `*trace` 检查所有集成点测试
+- 后续用 `*nfr` 验证集成性能
 
-**Performance-Critical:**
+**性能关键：**
 
-- Run `*nfr` early and often during development
-- Don't wait until review to discover performance issues
+- 开发早期和过程中多次运行 `*nfr`
+- 不要等到评审才发现性能问题
 
-**Brownfield/Legacy Code:**
+**棕地/遗留代码：**
 
-- Start with `*risk` to identify regression dangers
-- Use `*review` with extra focus on backward compatibility
+- 先用 `*risk` 识别回归风险
+- 用 `*review` 重点关注兼容性
 
-### Best Practices
+### 最佳实践
 
-- **Early Engagement**: Run `*design` and `*risk` during story drafting
-- **Risk-Based Focus**: Let risk scores drive test prioritization
-- **Iterative Improvement**: Use QA feedback to improve future stories
-- **Gate Transparency**: Share gate decisions with the team
-- **Continuous Learning**: QA documents patterns for team knowledge sharing
-- **Brownfield Care**: Pay extra attention to regression risks in existing systems
+- **早期介入**：Story 草拟时就运行 `*design` 和 `*risk`
+- **风险驱动**：用风险分数决定测试优先级
+- **迭代改进**：用 QA 反馈优化后续 Story
+- **Gate 透明**：团队共享 Gate 决策
+- **持续学习**：QA 文档沉淀团队知识
+- **棕地关注**：遗留系统重点防回归风险
 
-### Output Paths Reference
+### 输出路径参考
 
-Quick reference for where Test Architect outputs are stored:
+测试架构师输出存储路径速查：
 
 ```text
 *risk-profile  → docs/qa/assessments/{epic}.{story}-risk-{YYYYMMDD}.md
 *test-design   → docs/qa/assessments/{epic}.{story}-test-design-{YYYYMMDD}.md
 *trace         → docs/qa/assessments/{epic}.{story}-trace-{YYYYMMDD}.md
 *nfr-assess    → docs/qa/assessments/{epic}.{story}-nfr-{YYYYMMDD}.md
-*review        → QA Results section in story + gate file reference
+*review        → Story QA 结果 + gate 文件引用
 *gate          → docs/qa/gates/{epic}.{story}-{slug}.yml
 ```
 
-## Technical Preferences System
+## 技术偏好系统
 
-BMad includes a personalization system through the `technical-preferences.md` file located in `.bmad-core/data/` - this can help bias the PM and Architect to recommend your preferences for design patterns, technology selection, or anything else you would like to put in here.
+BMad 通过 `.bmad-core/data/technical-preferences.md` 文件实现个性化，可引导 PM 和架构师推荐你的设计模式、技术选型等偏好。
 
-### Using with Web Bundles
+### 用于 Web Bundle
 
-When creating custom web bundles or uploading to AI platforms, include your `technical-preferences.md` content to ensure agents have your preferences from the start of any conversation.
+创建自定义 Web Bundle 或上传到 AI 平台时，包含你的 `technical-preferences.md`，确保 agent 从会话开始就了解你的偏好。
 
-## Core Configuration
+## 核心配置
 
-The `.bmad-core/core-config.yaml` file is a critical config that enables BMad to work seamlessly with differing project structures, more options will be made available in the future. Currently the most important is the devLoadAlwaysFiles list section in the yaml.
+`.bmad-core/core-config.yaml` 是关键配置文件，支持不同项目结构，未来将有更多选项。目前最重要的是 yaml 中 devLoadAlwaysFiles 列表。
 
-### Developer Context Files
+### 开发者上下文文件
 
-Define which files the dev agent should always load:
+定义 dev agent 始终加载的文件：
 
 ```yaml
 devLoadAlwaysFiles:
@@ -560,17 +559,17 @@ devLoadAlwaysFiles:
   - docs/architecture/project-structure.md
 ```
 
-You will want to verify from sharding your architecture that these documents exist, that they are as lean as possible, and contain exactly the information you want your dev agent to ALWAYS load into its context. These are the rules the agent will follow.
+分片架构后需确认这些文档存在、精简，并只包含 dev agent 始终需遵循的规则。
 
-As your project grows and the code starts to build consistent patterns, coding standards should be reduced to include only the standards the agent still needs enforced. The agent will look at surrounding code in files to infer the coding standards that are relevant to the current task.
+项目成长后，编码规范应只保留 agent 仍需强制的部分。agent 会参考文件周边代码，推断当前任务相关规范。
 
-## Getting Help
+## 获取帮助
 
-- **Discord Community**: [Join Discord](https://discord.gg/gk8jAdXWmj)
-- **GitHub Issues**: [Report bugs](https://github.com/bmadcode/bmad-method/issues)
-- **Documentation**: [Browse docs](https://github.com/bmadcode/bmad-method/docs)
-- **YouTube**: [BMadCode Channel](https://www.youtube.com/@BMadCode)
+- **Discord 社区**：[加入 Discord](https://discord.gg/gk8jAdXWmj)
+- **GitHub Issues**：[报告 Bug](https://github.com/bmadcode/bmad-method/issues)
+- **文档**：[浏览文档](https://github.com/bmadcode/bmad-method/docs)
+- **YouTube**：[BMadCode 频道](https://www.youtube.com/@BMadCode)
 
-## Conclusion
+## 结语
 
-Remember: BMad is designed to enhance your development process, not replace your expertise. Use it as a powerful tool to accelerate your projects while maintaining control over design decisions and implementation details.
+记住：BMad 旨在提升你的开发流程，而非取代你的专业。把它当作加速项目的强力工具，同时保持对设计和实现的主导权。
